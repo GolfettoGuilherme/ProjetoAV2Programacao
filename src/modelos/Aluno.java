@@ -2,7 +2,7 @@ package modelos;
 
 public class Aluno {
 
-   private int ra;
+    private int ra;
     private String nome;
     private String cpf;
     private String endereco;

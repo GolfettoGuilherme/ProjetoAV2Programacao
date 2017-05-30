@@ -68,14 +68,14 @@ public class AlunoDao {
     public boolean alterarAluno(Aluno a){
         boolean retorno;
         try{
-            String sql = "UPDATE tbAlunos SET"
-                    + "nome = ?, "
-                    + "cpf = ? ,"
-                    + "endereco = ? ,"
+            String sql = "UPDATE tbAlunos SET "
+                    + "nome = ?,"
+                    + "cpf = ?,"
+                    + "endereco = ?,"
                     + "telefone = ?,"
-                    + "curso = ?"
+                    + "curso = ? "
                     + "WHERE ra = ?";
-            PreparedStatement update = (PreparedStatement) conn.prepareStatement(sql);
+            PreparedStatement update = conn.prepareStatement(sql);
             update.setString(1, a.getNome());
             update.setString(2, a.getCpf());
             update.setString(3, a.getEndereco());
@@ -93,6 +93,22 @@ public class AlunoDao {
         return retorno;
     }
     
+    public boolean excluirAluno(int ra){
+        boolean retorno;
+        try{
+            String sql = "DELETE FROM tbAlunos WHERE ra = ?";
+            PreparedStatement delete = conn.prepareStatement(sql);
+            delete.setInt(1, ra);
+            
+            delete.executeUpdate();
+            delete.close();
+            retorno = true;
+        } catch(SQLException ex){
+            ex.printStackTrace();
+            retorno = false;
+        }
+        return retorno;
+    }
     public List<Aluno> buscarAlunos(){
         List<Aluno> alunos = new ArrayList<>();
         try{
@@ -105,7 +121,7 @@ public class AlunoDao {
                 a.setNome(rs.getString("nome"));
                 a.setCpf(rs.getString("cpf"));
                 a.setEndereco(rs.getString("endereco"));
-                a.setTelefone(rs.getString("endereco"));
+                a.setTelefone(rs.getString("telefone"));
                 a.setCurso(rs.getString("curso"));
                 alunos.add(a);
             }
