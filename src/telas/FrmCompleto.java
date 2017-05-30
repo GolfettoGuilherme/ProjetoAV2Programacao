@@ -15,6 +15,7 @@ public class FrmCompleto extends javax.swing.JFrame {
         txtRa.setVisible(false);
         btnCancelar.setVisible(false);
         btnExcluir.setVisible(false);
+        this.setTitle("Central do Aluno - Ava 2.0");
     }
 
  
@@ -291,9 +292,12 @@ public class FrmCompleto extends javax.swing.JFrame {
                 limparCampos();
                 btnCancelar.setVisible(false);
                 btnExcluir.setVisible(false);
+                info = JOptionPane.INFORMATION_MESSAGE;
             } else{
                 mensagemRetorno = "Erro ao alterar aluno";
+                info = JOptionPane.ERROR_MESSAGE;
             }
+            btnCadastrar.setText("Cadastrar");
         }
         JOptionPane.showMessageDialog(this, mensagemRetorno, "Atenção", info);
     }//GEN-LAST:event_btnCadastrarActionPerformed
@@ -316,7 +320,7 @@ public class FrmCompleto extends javax.swing.JFrame {
         limparCampos();
         btnCadastrar.setText("Cadastrar");
         btnCancelar.setVisible(false);
-        
+        btnExcluir.setVisible(false);
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnExcluirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnExcluirActionPerformed
@@ -336,6 +340,7 @@ public class FrmCompleto extends javax.swing.JFrame {
             info = JOptionPane.ERROR_MESSAGE;
         }
         JOptionPane.showMessageDialog(this, mensagem, "Atenção", info);
+        btnCadastrar.setText("Cadastrar");
     }//GEN-LAST:event_btnExcluirActionPerformed
 
     

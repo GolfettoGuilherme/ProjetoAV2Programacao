@@ -109,6 +109,7 @@ public class AlunoDao {
         }
         return retorno;
     }
+    
     public List<Aluno> buscarAlunos(){
         List<Aluno> alunos = new ArrayList<>();
         try{
